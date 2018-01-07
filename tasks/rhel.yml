@@ -31,6 +31,9 @@
   tags:
     - install
 
+- name: "Clear nodesource updates"
+  meta: flush_handlers
+
 - name: Update main binaries
   include_role:
     name: dotfiles-package-installer-role
