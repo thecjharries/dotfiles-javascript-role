@@ -36,7 +36,7 @@
 
 - name: Update main binaries
   include_role:
-    name: dotfiles-package-installer-role
+    name: dotfiles-role-package-installer
   vars:
     packages_to_install:
       - nodejs

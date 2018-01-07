@@ -1,5 +1,5 @@
 ---
 dependencies:
-  - role: dotfiles-common-software-role
-  - role: dotfiles-package-installer-role
+  - role: dotfiles-role-common-software
+  - role: dotfiles-role-package-installer
     packages_to_install: "{{ needed_packages }}"
