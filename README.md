@@ -1,6 +1,7 @@
 # `dotfiles-role-javascript`
 
 [![Build Status](https://travis-ci.org/thecjharries/dotfiles-role-javascript.svg?branch=master)](https://travis-ci.org/thecjharries/dotfiles-role-javascript)
+[![GitHub release](https://img.shields.io/github/release/thecjharries/dotfiles-role-javascript.svg)](https://github.com/thecjharries/dotfiles-role-javascript)
 
 ## Requirements
 
