@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+
+  roles:
+    - role: "{{ playbook_dir }}"
+      author_name: Rick James
+      author_email: something@clever.com
+      author_url: clever.com

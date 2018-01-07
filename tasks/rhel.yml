@@ -1,0 +1,64 @@
+---
+- name: "Refresh the Yarn repo"
+  get_url:
+    url: https://dl.yarnpkg.com/rpm/yarn.repo
+    dest: /etc/yum.repos.d/yarn.repo
+  become: yes
+  tags:
+    - package
+    - repository
+
+- name: "Ensure installers directory is present"
+  file:
+    path: "{{ nodesource_src_path | dirname }}"
+    state: directory
+    owner: root
+    group: root
+  become: yes
+  tags:
+    - directory
+
+- name: "Get latest Node installer"
+  get_url:
+    url: https://rpm.nodesource.com/setup_9.x
+    dest: "{{ nodesource_src_path }}"
+    mode: "u=rwx,go="
+    owner: root
+    group: root
+  become: yes
+  register: nodesource_installer
+  notify: "update nodesource"
+  tags:
+    - install
+
+- name: "Clear nodesource updates"
+  meta: flush_handlers
+
+- name: Update main binaries
+  include_role:
+    name: dotfiles-package-installer-role
+  vars:
+    packages_to_install:
+      - nodejs
+      - yarn
+
+- name: "Ensure {{ root_dir }} exists"
+  when: author_name is defined and author_email is defined and author_url is defined
+  file:
+    path: "{{ root_dir }}"
+    state: directory
+    owner: "{{ owning_user }}"
+    group: "{{ owning_group }}"
+
+- name: "Template the NPM config file"
+  when: author_name is defined and author_email is defined and author_url is defined
+  blockinfile:
+    dest: "{{ root_dir }}/.npmrc"
+    block: "{{ npmrc_block }}"
+    owner: "{{ owning_user }}"
+    group: "{{ owning_group }}"
+    mode: "u=rwx"
+    create: yes
+  tags:
+    - config
+    - template
