@@ -1,6 +1,8 @@
-# `dotfiles-javascript-role`
+# `dotfiles-role-javascript`
+# `dotfiles-role-javascript`
 
-[![Build Status](https://travis-ci.org/thecjharries/dotfiles-javascript-role.svg?branch=master)](https://travis-ci.org/thecjharries/dotfiles-javascript-role)
+[![Build Status](https://travis-ci.org/thecjharries/dotfiles-role-javascript.svg?branch=master)](https://travis-ci.org/thecjharries/dotfiles-role-javascript)
+[![Build Status](https://travis-ci.org/thecjharries/dotfiles-role-javascript.svg?branch=master)](https://travis-ci.org/thecjharries/dotfiles-role-javascript)
 
 ## Requirements
 
@@ -46,8 +48,10 @@ author_url
 
 ```yml
 ---
-- src: git+https://github.com/thecjharries/dotfiles-common-software-role.git
-- src: git+https://github.com/thecjharries/dotfiles-package-installer-role.git
+- src: git+https://github.com/thecjharries/dotfiles-role-common-software.git
+- src: git+https://github.com/thecjharries/dotfiles-role-common-software.git
+- src: git+https://github.com/thecjharries/dotfiles-role-package-installer.git
+- src: git+https://github.com/thecjharries/dotfiles-role-package-installer.git
 ```
 
 ## Example Playbook
@@ -57,7 +61,8 @@ author_url
 - hosts: all
 
   roles:
-    - role: dotfiles-javascript-role
+    - role: dotfiles-role-javascript
+    - role: dotfiles-role-javascript
       author_name: Rick James
       author_email: something@clever.com
       author_url: clever.com
