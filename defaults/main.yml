@@ -1,0 +1,14 @@
+---
+owning_user: "{{ ansible_user }}"
+owning_group: "{{ ansible_user }}"
+root_dir: "/home/{{ ansible_user }}"
+config_dir: "{{ root_dir }}/.config"
+
+nodesource_src_path: /opt/installers/nodesource
+
+npmrc_block: |
+    init-author-name={{ author_name }}
+    init-author-email={{ author_email }}
+    init-author-url={{ author_url }}
+    init-version=0.0.0
+    init-license=ISC
